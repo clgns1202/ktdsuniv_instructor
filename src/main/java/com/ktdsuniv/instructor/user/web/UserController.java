@@ -19,28 +19,28 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping("/test")
+	@RequestMapping("/instructor/test")
 	public String test(){
 		return "/test";
 	}
 	
-	@RequestMapping("/instructorSignIn")
+	@RequestMapping("/instructor/instructorSignIn")
 	public ModelAndView viewSignInPage() {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("instructorSignIn");
 		return view;
 	}
 	
-	@RequestMapping("/instructorDoSignIn")
+	@RequestMapping("/instructor/instructorDoSignIn")
 	public String doSignInAction(UsersSchema user, HttpSession session) {
 		userService.instructorSignIn(user, session);
-		return "redirect:/main";
+		return "redirect:/instructor/main";
 	}
 	
-	@RequestMapping("/instructorSignOut")
+	@RequestMapping("/instructor/instructorSignOut")
 	public String doSignOutAction(HttpSession session) {
 		session.invalidate();
-		return "redirect:/instructorSignIn";
+		return "redirect:/instructor/instructorSignIn";
 	}
 
 }
