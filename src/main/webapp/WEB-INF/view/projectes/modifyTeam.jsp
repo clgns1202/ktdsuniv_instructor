@@ -23,7 +23,7 @@
 <body>
 
 	<form action="<c:url value="/projects/teams/doModifyTeam"/>" method="post">
-		<input type="hidden" id="teamId" name="teamId" value="${team.id }"/>
+		<input type="hidden" id="id" name="id" value="${team.id }"/>
 		<div><label for="lectureId">강의ID : </label><input type="text" name="lectureId" id="lectureId" value="${team.lectureId }"></div>
 		<div><label for="teamName">팀명 : </label><input type="text" name="teamName" id="teamName" value="${team.teamName }"></div>
 		

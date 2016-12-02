@@ -13,4 +13,6 @@ public interface ProjectDao {
 
 	public int modifyTeam(TeamsSchema team);
 
+	public int deleteTeam(String teamId);
+
 }

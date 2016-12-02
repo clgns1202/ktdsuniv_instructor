@@ -17,4 +17,6 @@ public interface ProjectBiz {
 
 	public boolean modifyTeam(TeamsSchema team);
 
+	public boolean deleteTeam(String teamId);
+
 }

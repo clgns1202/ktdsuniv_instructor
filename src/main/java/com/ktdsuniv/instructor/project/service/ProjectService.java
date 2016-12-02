@@ -28,4 +28,6 @@ public interface ProjectService {
 
 	public boolean modifyTeam(TeamsSchema team);
 
+	public boolean deleteTeam(String teamId);
+
 }

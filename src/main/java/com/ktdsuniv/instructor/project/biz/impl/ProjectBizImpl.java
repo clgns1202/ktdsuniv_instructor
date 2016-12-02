@@ -42,5 +42,10 @@ public class ProjectBizImpl implements ProjectBiz {
 	public boolean modifyTeam(TeamsSchema team) {
 		return projectDao.modifyTeam(team) > 0;
 	}
+
+	@Override
+	public boolean deleteTeam(String teamId) {
+		return projectDao.deleteTeam(teamId) > 0;
+	}
 	
 }

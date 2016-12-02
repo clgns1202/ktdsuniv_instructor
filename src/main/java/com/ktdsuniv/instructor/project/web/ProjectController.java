@@ -116,6 +116,15 @@ public class ProjectController {
 		projectService.modifyTeam(team);
 		return "redirect:/projects/teams/list/"+team.getLectureId();
 	}
+	
+	@RequestMapping("/projects/teams/delete/{teamId}")
+	@ResponseBody
+	public String doDeleteTeamAction(@PathVariable String teamId){
+		
+		projectService.deleteTeam(teamId);
+		
+		return teamId;
+	}	
 
 	@RequestMapping("/test")
 	public ModelAndView test(SearchVO search){

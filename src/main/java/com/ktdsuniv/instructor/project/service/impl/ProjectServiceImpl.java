@@ -81,7 +81,20 @@ public class ProjectServiceImpl implements ProjectService{
 
 	@Override
 	public boolean modifyTeam(TeamsSchema team) {
-		return projectBiz.modifyTeam(team);
+		
+		TeamsSchema t = commonBiz.getMongoById("_id", team.getId(), TeamsSchema.class);
+		if(!t.getTeamName().equals(team.getTeamName())){
+			t.setTeamName(team.getTeamName());
+		}
+		
+		t.setUser(team.getUser());
+		
+		return projectBiz.modifyTeam(t);
+	}
+
+	@Override
+	public boolean deleteTeam(String teamId) {
+		return projectBiz.deleteTeam(teamId);
 	}
 	
 	

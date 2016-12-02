@@ -35,6 +35,17 @@
 		});
 		
 	});
+	
+		function deleteTeam(teamId){
+			if(confirm("정말 삭제하시겠습니까?")){
+				$.post("<c:url value="/projects/teams/delete/"/>"+teamId, function(data){
+					$("#"+data).remove();
+				});
+			}
+		}
+	
+	
+				
 </script>
 <style type="text/css">
 	#teams .teamName, .totalNumber, .createdDate {
@@ -54,11 +65,12 @@
 		<c:choose>
 			<c:when test="${ not empty teamsList.pageList }">
 				<c:forEach items="${teamsList.pageList}" var="teams">
-					<div class="team" data-id="${teams.id }">
+					<div class="team" data-id="${teams.id }" id="${teams.id }">
 						<span class="teamName">${teams.teamName }</span>
 						<span class="totalNumber">${fn:length(teams.user) }</span>
 						<span class="createdDate">${teams.createdDate }</span>
 						<span class="modify"><a href="<c:url value="/projects/teams/modify/${teams.id }"/>">수정</a></span>
+						<span class="delete"><a href="javascript:void(0)" onclick="deleteTeam('${teams.id}')">삭제</a></span>
 						<div class="members"></div>
 					</div>			
 				</c:forEach>
@@ -76,7 +88,7 @@
 		${page}
 	</form>
 	
-	<a href="<c:url value="/projects/teams/addTeam/${lectureId }"/>"></a>
+	<a href="<c:url value="/projects/teams/addTeam/${lectureId }"/>">팀 생성</a>
 
 </body>
 </html>
