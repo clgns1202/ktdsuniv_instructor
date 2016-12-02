@@ -19,9 +19,11 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping("/instructor/test")
-	public String test(){
-		return "/test";
+	@RequestMapping("/instructor/main")
+	public ModelAndView viewInstructorMainPage(){
+		ModelAndView view = new ModelAndView();
+		view.setViewName("/instructorMain");
+		return view;
 	}
 	
 	@RequestMapping("/instructor/instructorSignIn")
