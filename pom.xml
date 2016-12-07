@@ -37,7 +37,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>com.ktds</groupId>
 			<artifactId>KtdsSchema</artifactId>
