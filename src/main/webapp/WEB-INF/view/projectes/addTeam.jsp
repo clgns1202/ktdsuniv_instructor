@@ -9,9 +9,9 @@
 </head>
 <body>
 
-	<form action="<c:url value="/instructor/doAddTeam"/>" method="post">
-		
-		<div><label for="teamName">팀명 : </label><input type="text" name="name" id="name"></div>
+	<form action="<c:url value="/projects/teams/doAddTeam"/>" method="post">
+		<div><label for="lectureId">강의ID : </label><input type="text" name="lectureId" id="lectureId"></div>
+		<div><label for="teamName">팀명 : </label><input type="text" name="teamName" id="teamName"></div>
 		
 		<div class="checkbox">
 			<c:forEach varStatus="state" begin="1" end="10">
