@@ -1,5 +1,7 @@
 package com.ktdsuniv.instructor.user.biz.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,6 +9,7 @@ import com.ktdsuniv.instructor.user.biz.UserBiz;
 import com.ktdsuniv.instructor.user.dao.UserDao;
 
 import common.util.SHA256Util;
+import lecture.schema.LecturesSchema;
 import user.schema.InstructorsSchema;
 import user.schema.UsersSchema;
 
@@ -31,6 +34,11 @@ public class UserBizImpl implements UserBiz {
 		user.setUserPassword(password);
 		
 		return userDao.instructorSignIn(user);
+	}
+
+	@Override
+	public List<LecturesSchema> getInstructorLecture(InstructorsSchema instructor) {
+		return userDao.getInstructorLecture(instructor);
 	}
 	
 }
