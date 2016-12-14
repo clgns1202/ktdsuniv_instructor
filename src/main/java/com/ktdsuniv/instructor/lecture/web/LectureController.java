@@ -12,5 +12,4 @@ public class LectureController {
 	public void setLectureService(LectureService lectureService) {
 		this.lectureService = lectureService;
 	}
-	
 }

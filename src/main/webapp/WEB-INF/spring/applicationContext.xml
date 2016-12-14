@@ -67,5 +67,5 @@
 			class="com.ktdsuniv.instructor.room.web.SeatController">
 		<property name="seatService" ref="seatService"/>		
 	</bean>
-
+	
 </beans>
