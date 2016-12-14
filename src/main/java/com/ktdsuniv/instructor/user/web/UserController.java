@@ -15,8 +15,4 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping("/test")
-	public String test(){
-		return "/test";
-	}
 }
