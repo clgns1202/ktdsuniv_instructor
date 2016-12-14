@@ -24,6 +24,7 @@ public class LectureController {
 	public void setLectureService(LectureService lectureService) {
 		this.lectureService = lectureService;
 	}
+
 	
 	@RequestMapping("/lecture/scoreList/{lectureId}")
 	public ModelAndView viewUserByLectureId(@PathVariable String lectureId){
@@ -54,5 +55,4 @@ public class LectureController {
 		view.setViewName("redirect:/lecture/addScore/" + lectureId);
 		return view;
 	}
-	
 }

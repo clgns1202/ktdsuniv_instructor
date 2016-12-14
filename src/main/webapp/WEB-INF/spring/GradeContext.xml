@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean	id="gradeService"
+			class="com.ktdsuniv.instructor.grade.service.impl.GradeServiceImpl">
+		<property name="gradeBiz" ref="gradeBiz"/>	
+		<property name="commonBiz" ref="commonBiz"/>
+	</bean>
+
+	<bean	id="gradeBiz"
+			class="com.ktdsuniv.instructor.grade.biz.impl.GradeBizImpl">
+		<property name="gradeDao" ref="gradeDao"/>		
+	</bean>
+	
+	<bean	id="gradeDao"
+			class="com.ktdsuniv.instructor.grade.dao.impl.GradeDaoImpl">
+		<property name="mongoTemplate" ref="mongoTemplate"/>		
+	</bean>
+</beans>
