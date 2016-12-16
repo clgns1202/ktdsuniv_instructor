@@ -34,8 +34,8 @@
 			</tr>
 			<c:forEach items="${users}" var="user">
 					<tr>
-						<td>${user.userName}</td> 
-						<td><input type="text" class="score" name="score" style="width: 30px;"> 점</td>
+						<td><input type="hidden" value="${user.userId}" name="userIds">${user.userName}</td> 
+						<td><input type="text" class="score" name="scores" style="width: 30px;"> 점</td>
 					</tr>
 			</c:forEach>
 		</table>	

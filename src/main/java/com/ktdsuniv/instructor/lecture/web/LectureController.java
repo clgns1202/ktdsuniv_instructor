@@ -1,5 +1,6 @@
 package com.ktdsuniv.instructor.lecture.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -35,6 +36,9 @@ public class LectureController {
 		return view;
 	}
 	
+	/*
+	 * 강의를 신청한 사람들의 목록을 보여준다.
+	 */
 	@RequestMapping("/lecture/addScore/{lectureId}")
 	public ModelAndView addScorePage(@PathVariable String lectureId){
 		ModelAndView view = new ModelAndView();
@@ -46,13 +50,31 @@ public class LectureController {
 	}
 	
 	@RequestMapping("/lecture/inputScore")
-	public ModelAndView inputScoreAction(@RequestParam List<Double> score, String lectureId, String testName){
+	public ModelAndView inputScoreAction(@RequestParam List<Double> scores, @RequestParam List<String> userIds, TestsSchema test){
 		ModelAndView view = new ModelAndView();
-		for (Double scores : score) {
-			logger.debug("=================ss=="+lectureId);
-			logger.debug("================dd==="+scores);
+		
+		List<UsersSchema> usersSchemas = new ArrayList<UsersSchema>();
+		List<TestsSchema> testsSchemas = null;
+		
+		UsersSchema usersSchema = null;
+		TestsSchema testsSchema = null;
+		for ( int i = 0; i < scores.size(); i++ ) {
+			usersSchema = new UsersSchema();
+			usersSchema.setUserId(userIds.get(i));
+			
+			testsSchema = new TestsSchema();
+			testsSchema.setScore(scores.get(i));
+			testsSchema.setTestName(test.getTestName());
+			testsSchema.setLectureId(test.getLectureId());
+			testsSchemas = new ArrayList<TestsSchema>();
+			testsSchemas.add(testsSchema);
+			usersSchema.setTests(testsSchemas);
+			
+			usersSchemas.add(usersSchema);
 		}
-		view.setViewName("redirect:/lecture/addScore/" + lectureId);
+		
+		boolean isSuccess = lectureService.inputScoreByLectureId(usersSchemas);
+		view.setViewName("redirect:/lecture/addScore/" + test.getLectureId());
 		return view;
 	}
 }
