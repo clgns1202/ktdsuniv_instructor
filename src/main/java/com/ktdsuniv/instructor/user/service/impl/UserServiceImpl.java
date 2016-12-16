@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean instructorSignIn(UsersSchema user, HttpSession session) {
 		InstructorsSchema signedInstructor = userBiz.instructorSignIn(user);
-		
 		if(signedInstructor != null) {
 			session.setAttribute(Session.INSTRUCTOR, signedInstructor);
 			return true;
