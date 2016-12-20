@@ -32,6 +32,7 @@ public class LectureController {
 		ModelAndView view = new ModelAndView();
 		List<UsersSchema> users = lectureService.getUserByLectureId(lectureId);
 		view.addObject("users", users);
+		view.addObject("lectureId", lectureId);
 		view.setViewName("lecture/scoreList");
 		return view;
 	}
@@ -75,6 +76,13 @@ public class LectureController {
 		
 		boolean isSuccess = lectureService.inputScoreByLectureId(usersSchemas);
 		view.setViewName("redirect:/lecture/addScore/" + test.getLectureId());
+		return view;
+	}
+	
+	@RequestMapping("/lecture/deleteScore")
+	public ModelAndView deleteScore(){
+		ModelAndView view = new ModelAndView();
+		
 		return view;
 	}
 }

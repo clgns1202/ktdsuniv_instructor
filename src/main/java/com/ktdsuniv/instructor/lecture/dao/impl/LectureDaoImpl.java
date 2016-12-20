@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import com.ktdsuniv.instructor.lecture.dao.LectureDao;
 
 import common.support.mongo.MongoTemplateSupport;
+import grades.schema.TestsSchema;
 import lecture.schema.LecturesSchema;
 import user.schema.UsersSchema;
 
@@ -26,6 +27,8 @@ public class LectureDaoImpl extends MongoTemplateSupport implements LectureDao {
 		criteria.is(lectureId);
 		Query query = new Query(criteria);
 		LecturesSchema lecture = (LecturesSchema) getMongo().findOne(query, LecturesSchema.class, "lectures");
+		
+		
 		return lecture.getUser();
 	}
 	
@@ -66,7 +69,6 @@ public class LectureDaoImpl extends MongoTemplateSupport implements LectureDao {
 			UsersSchema user = getMongo().findOne(query, UsersSchema.class, "users");
 			users.add(user);
 		}
-		
 		String lectureId = usersSchemas.get(0).getTests().get(0).getLectureId();
 		criteria = new Criteria("id");
 		criteria.is(lectureId);

@@ -14,6 +14,27 @@
 </script>
 </head>
 <body>
-	
+	<p>점수 목록</p>
+	<hr>
+	<table style="border:1px solid;">
+		<tr>
+			<td></td>
+			<c:forEach items="${users[0].tests}" var="test">
+			<c:if test="${lectureId eq test.lectureId}">
+			<td><a href="<c:url value="/lecture/scoreModify?testName=${test.testName}&&lectureId=${test.lectureId}"/>">${test.testName}</a></td>
+			</c:if>
+			</c:forEach>
+		</tr>
+	<c:forEach items="${users}" var="user">
+		<tr>
+			<td>${user.userName}</td>
+			<c:forEach items="${user.tests}" var="test">
+			<c:if test="${lectureId eq test.lectureId}">
+				<td>${test.score}</td>
+			</c:if>
+			</c:forEach>
+		</tr>
+	</c:forEach>
+	</table>
 </body>
 </html>
