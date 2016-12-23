@@ -78,11 +78,4 @@ public class LectureController {
 		view.setViewName("redirect:/lecture/addScore/" + test.getLectureId());
 		return view;
 	}
-	
-	@RequestMapping("/lecture/deleteScore")
-	public ModelAndView deleteScore(){
-		ModelAndView view = new ModelAndView();
-		
-		return view;
-	}
 }
