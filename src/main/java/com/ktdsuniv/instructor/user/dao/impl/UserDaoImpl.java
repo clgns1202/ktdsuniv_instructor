@@ -34,12 +34,7 @@ public class UserDaoImpl extends MongoTemplateSupport implements UserDao {
 		criteria.is(user.getUserId());
 		criteria = criteria.and("userPassword");
 		criteria.is(user.getUserPassword());
-		
 		Query query = new Query(criteria);
-		
 		return getMongo().findOne(query, InstructorsSchema.class, "instructors");
 	}
-
-	
-	
 }
