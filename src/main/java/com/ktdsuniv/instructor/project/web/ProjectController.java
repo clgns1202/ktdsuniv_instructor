@@ -68,7 +68,7 @@ public class ProjectController {
 		PageListVO list = projectService.getAllTeams(search);
 		
 		PageExplorer pageExplorer = new ClassicPageExplorer(list.getPager());
-		String page = pageExplorer.getPagingList("pageNumber", "[@]", "이전", "다음", "searchForm");
+		String page = pageExplorer.getPagingList("pageNumber", "[@]", "�씠�쟾", "�떎�쓬", "searchForm");
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("projectes/teamsList");
@@ -130,16 +130,7 @@ public class ProjectController {
 	public ModelAndView test(SearchVO search){
 		ModelAndView view = new ModelAndView();
 		view.setViewName("test");
-		view.addObject("test",projectService.getTest("5"));
-		
-		PageListVO list = projectService.getListTest(search);
-		
-		PageExplorer pageExplorer = new ClassicPageExplorer(list.getPager());
-		String page = pageExplorer.getPagingList("pageNumber", "[@]", "이전", "다음", "searchForm");
-		
-		view.addObject("list", list);
-		view.addObject("page", page);
-		view.addObject("seach", search);
+		view.addObject("test","datdsatds");
 		
 		return view;
 	}	
