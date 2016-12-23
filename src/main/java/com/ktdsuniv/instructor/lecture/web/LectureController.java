@@ -32,6 +32,7 @@ public class LectureController {
 		ModelAndView view = new ModelAndView();
 		List<UsersSchema> users = lectureService.getUserByLectureId(lectureId);
 		view.addObject("users", users);
+		view.addObject("lectureId", lectureId);
 		view.setViewName("lecture/scoreList");
 		return view;
 	}

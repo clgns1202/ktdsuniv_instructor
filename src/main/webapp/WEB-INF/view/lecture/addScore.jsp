@@ -15,6 +15,10 @@
 				alert("시험명이 비었습니다");
 				return;
 			}
+			if($(".score").val()==""){
+				alert("점수가 비었습니다");
+				return;
+			}
 			$("#addScoreForm").attr({
 				"method": "post",
 				"action": "<c:url value="/lecture/inputScore"/>"

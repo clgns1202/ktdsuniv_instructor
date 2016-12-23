@@ -11,5 +11,5 @@ public interface LectureDao {
 
 	public int inputScoreByLectureId(List<UsersSchema> usersSchemas);
 
-
+	public int inputScoreToLecture(List<UsersSchema> usersSchemas);
 }

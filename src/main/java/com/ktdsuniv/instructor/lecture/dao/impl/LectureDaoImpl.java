@@ -1,5 +1,6 @@
 package com.ktdsuniv.instructor.lecture.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -26,6 +27,8 @@ public class LectureDaoImpl extends MongoTemplateSupport implements LectureDao {
 		criteria.is(lectureId);
 		Query query = new Query(criteria);
 		LecturesSchema lecture = (LecturesSchema) getMongo().findOne(query, LecturesSchema.class, "lectures");
+		
+		
 		return lecture.getUser();
 	}
 	
@@ -47,16 +50,33 @@ public class LectureDaoImpl extends MongoTemplateSupport implements LectureDao {
 			getMongo().updateFirst(query, update, UsersSchema.class, "users");
 		}
 		
-		/*for (UsersSchema usersSchema : usersSchemas) {
-			criteria = new Criteria("id");
-			criteria.is(usersSchema.getTests().get(0).getLectureId());
+		inputScoreToLecture(usersSchemas);
+		
+		return 1;
+	}
+	
+	@Override
+	public int inputScoreToLecture(List<UsersSchema> usersSchemas) {
+		Criteria criteria = null;
+		Query query = null;
+		List<UsersSchema> users = new ArrayList<UsersSchema>();
+		for (UsersSchema usersSchema : usersSchemas) {
+			criteria = new Criteria("userId");
+			criteria.is(usersSchema.getUserId());
+			
 			query = new Query(criteria);
-			LecturesSchema lecuture = getMongo().findOne(query, LecturesSchema.class);
 			
-			
-		}*/
+			UsersSchema user = getMongo().findOne(query, UsersSchema.class, "users");
+			users.add(user);
+		}
+		String lectureId = usersSchemas.get(0).getTests().get(0).getLectureId();
+		criteria = new Criteria("id");
+		criteria.is(lectureId);
+		query = new Query(criteria);
+		LecturesSchema lecture = getMongo().findOne(query, LecturesSchema.class, "lectures");
+		lecture.setUser(users);
 		
-		
+		getMongo().save(lecture);
 		return 1;
 	}
 	
